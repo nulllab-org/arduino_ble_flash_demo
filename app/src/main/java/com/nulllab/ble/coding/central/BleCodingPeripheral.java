@@ -48,8 +48,8 @@ public class BleCodingPeripheral {
             synchronized (BleCodingPeripheral.this) {
                 if (mState == State.CONNECTING && newState == BluetoothProfile.STATE_CONNECTED) {
                     Log.d(TAG, "onConnectionStateChange: connected and request mtu");
-                    gatt.requestMtu(MTU_MAX);
-                    changeState(State.CONFIGURING_MTU);
+                    mBluetoothGatt.discoverServices();
+                    changeState(State.DISCOVERING_SERVICES);
                 } else if (newState == BluetoothProfile.STATE_DISCONNECTED && mState != State.DISCONNECTED) {
                     Log.d(TAG, "onConnectionStateChange: disconnected");
                     reset();
@@ -146,13 +146,13 @@ public class BleCodingPeripheral {
         public void onMtuChanged(BluetoothGatt gatt, int mtu, int status) {
             super.onMtuChanged(gatt, mtu, status);
             Log.d(TAG, "onMtuChanged: " + mtu);
-            synchronized (BleCodingPeripheral.this) {
-                if (mState == State.CONFIGURING_MTU) {
-                    mMtu = mtu;
-                    mBluetoothGatt.discoverServices();
-                    changeState(State.DISCOVERING_SERVICES);
-                }
-            }
+//            synchronized (BleCodingPeripheral.this) {
+//                if (mState == State.CONFIGURING_MTU) {
+//                    mMtu = mtu;
+//                    mBluetoothGatt.discoverServices();
+//                    changeState(State.DISCOVERING_SERVICES);
+//                }
+//            }
         }
 
         @Override
