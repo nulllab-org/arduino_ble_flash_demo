@@ -1,0 +1,3 @@
+[submodule "app/src/main/assets/example_code"]
+	path = app/src/main/assets/example_code
+	url = git@github.com:nulllab-org/micropython_examples.git
