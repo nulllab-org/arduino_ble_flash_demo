@@ -204,22 +204,11 @@ public class MainActivity extends AppCompatActivity {
             new Thread(() -> {
                 byte[] bin = null;
                 try {
-//                        bin = IntelHexUtils.hexToBin(new BufferedReader(new InputStreamReader(getAssets().open("hex/uno_print_hello_world.hex"))));
-//                        bin = IntelHexUtils.hexToBin(new BufferedReader(new InputStreamReader(getAssets().open("hex/uno_print_test.hex"))));
                     bin = IntelHexUtils.hexToBin(new BufferedReader(new InputStreamReader(getAssets().open("hex/" + hex))));
-//                        InputStream inputStream = getAssets().open("bin/print_test.bin");
-//                        bin = new byte[inputStream.available()];
-//                        inputStream.read(bin);
-//                        inputStream.close();
-                    Log.d(TAG, "arex bin length: " + bin.length);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
                 BleCodingPeripheral.ResultCode ret = mBleCodingPeripheral.flashBin(bin);
-//                    if (BleCodingPeripheral.ResultCode.OK != ret) {
-//                        Log.e(TAG, "failed to send file, " + ret);
-//                        Toast.makeText(this, "failed to send file: " + ret, Toast.LENGTH_SHORT).show();
-//                    }
             }).start();
         });
     }

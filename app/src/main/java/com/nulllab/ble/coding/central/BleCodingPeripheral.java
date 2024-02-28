@@ -297,6 +297,7 @@ public class BleCodingPeripheral {
         return bytes;
     }
 
+    @RequiresPermission(android.Manifest.permission.BLUETOOTH_CONNECT)
     private synchronized boolean writeCharacteristicAndWaitResponse(UUID uuid, byte[] data, byte[] response) {
         if (mState != State.CONNECTED) {
             Log.e(TAG, "writeCharacteristicAndWaitResponse: invalid state: " + mState);
