@@ -9,3 +9,7 @@
 - Write `AT+TARGE_RESET\r\n` to `0000ffe2-0000-1000-8000-00805f9b34fb` to reset the BLE-UNO.
 
 - Write the bin file converted from hex according to the skt500v1 protocol to `0000ffe1-0000-1000-8000-00805f9b34fb`.
+
+## Contact Information
+
+For any inquiries, please contact me via email at: arex@null-lab.com
